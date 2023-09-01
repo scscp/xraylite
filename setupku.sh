@@ -12,7 +12,7 @@ TIME=$(date +'%Y-%m-%d %H:%M:%S')
 KEY="6527590744:AAFabcavk-EwHPbA5b5uRNhXcf7ypXMcKGI"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 # domain random
-CDN="https://raw.githubusercontent.com/RJ-VPN/xraylite/main/ssh"
+CDN="https://raw.githubusercontent.com/scscp/xraylite/main/ssh"
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
 red='\e[1;31m'
