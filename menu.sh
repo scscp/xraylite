@@ -141,7 +141,7 @@ totalram=$(($total_ram/1024))
 # // Exporting Network Interface
 export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
 
-data_ip="https://raw.githubusercontent.com/RJ-VPN/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/scscp/permission/main/ip"
 d2=$(date -d "$date_list" +"+%s")
 d1=$(date -d "$Exp" +"+%s")
 dayleft=$(( ($d1 - $d2) / 86400 ))
