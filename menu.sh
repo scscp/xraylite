@@ -325,7 +325,7 @@ case $opt in
 99) clear ; update ;;
 22) clear ; fix ;;
 23) clear ; clear ; wget --load-cookies /tmp/cookies.txt ${UDPX} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
-24) clear ; wget ${BOT}kontol.sh && chmod +x kontol.sh && ./kontol.sh ;;
+24) clear ; installbot ;;
 
 0) clear ; menu ;;
 x) exit ;;
