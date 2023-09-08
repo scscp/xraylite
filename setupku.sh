@@ -166,12 +166,7 @@ sleep 2
 wget -q -O vpn.sh https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh/vpn.sh && chmod 777 vpn.sh && ./vpn.sh
 #cronjob
 #echo "30 * * * * root removelog" >> /etc/crontab
-wget -q -O /usr/bin/installbot "https://raw.githubusercontent.com/scscp/tetbot/main/bot_panel/installer.sh" && chmod +x /usr/bin/installbot
-wget -q -O /usr/bin/bbt "https://raw.githubusercontent.com/scscp/tetbot/main/bot_panel/bbt.sh" && chmod +x /usr/bin/bbt
 
-sleep 2
-echo -e "[ ${green}INFO${NC} ] Installing Successfully!!"
-sleep 1
 #pemangkuvmessvless
 mkdir /root/akun
 mkdir /root/akun/vmess
