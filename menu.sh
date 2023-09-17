@@ -285,14 +285,14 @@ echo -e " ${BICyan}[${BIWhite} X ${BICyan}] TYPE X FOR EXIT ${BICyan}${BIYellow}
 echo -e " ${RED}"
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e " ${BICyan}[${BIWhite}23${BICyan}]${RED} •${NC} ${YELLOW}UDP ${GREEN}INSTALL $NC"
-echo -e " ${BICyan}[${BIWhite}24${BICyan}]${RED} •${NC} ${YELLOW}BOT ${GREEN}INSTALL $NC"
+echo -e " ${BICyan}[${BIWhite}24${BICyan}]${RED} •${NC} ${YELLOW}BOT ${GREEN}(maintence) $NC"
 echo -e " ${BICyan}[${BIWhite} 99 ${BICyan}] UPDATE SC ${BICyan}${BIYellow}${BICyan}${NC}"
 echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 
 echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│ ${BOLD}${GREEN}Client    = $Name                           ${NC}"
 echo -e "${BICyan}│ ${BOLD}${RED}Expired   = $Exp                            ${NC}"
-echo -e "${BICyan}│ ${BOLD}${YELLOW}Developer = STORES PREMIUM                  ${NC}"
+echo -e "${BICyan}│ ${BOLD}${YELLOW}Developer = CANDRAVPN-STORES                  ${NC}"
 echo -e "${BICyan}│ ${BOLD}${PURPLE}Version   = SUPREMEGOD                     ${NC}"
 echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
 
@@ -325,7 +325,7 @@ case $opt in
 99) clear ; update ;;
 22) clear ; fix ;;
 23) clear ; clear ; wget --load-cookies /tmp/cookies.txt ${UDPX} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
-24) clear ; installbot ;;
+#24) clear ; installbot ;;
 
 0) clear ; menu ;;
 x) exit ;;
