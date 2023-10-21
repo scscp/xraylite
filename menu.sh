@@ -234,7 +234,7 @@ export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 clear
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e "                      << INFORMASI VPS >>                    \E[0m" | lolcat
+echo -e "                << WELLCOME TO MY SCRIPT CANDRA VPN STORES >>                    \E[0m" | lolcat
 echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
 echo -e "  ${BLUE}• ${GREEN}Sever Uptime        ${NC}= $( uptime -p  | cut -d " " -f 2-10000 ) "
 echo -e "  ${BLUE}• ${GREEN}Current Time        ${NC}= $( date -d "0 days" +"%d-%m-%Y | %X" )"
@@ -245,7 +245,7 @@ echo -e "  ${BLUE}• ${GREEN}ISP-VPS             ${NC}= ${ISP}"
 echo -e "  ${BLUE}• ${GREEN}City                ${NC}= ${CITY}"
 echo -e "  ${BLUE}• ${GREEN}Clients Name        ${NC}= ${YELLOW}$Name ${NC}"
 echo -e "  ${BLUE}• ${GREEN}Script Expired      ${NC}= ${YELLOW}$Exp (${NC}${RED} $dayleft Days ${NC}${YELLOW})${NC}"
-echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= STORES PRENIUM ${NC}"
+echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= CANDRA VPN STORE ${NC}"
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
 echo -e "                     << STATUS SERVICE >>                    \E[0m" | lolcat
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
@@ -292,8 +292,8 @@ echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━�
 echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│ ${BOLD}${GREEN}Client    = $Name                           ${NC}"
 echo -e "${BICyan}│ ${BOLD}${RED}Expired   = $Exp                            ${NC}"
-echo -e "${BICyan}│ ${BOLD}${YELLOW}Developer = CANDRAVPN-STORES                  ${NC}"
-echo -e "${BICyan}│ ${BOLD}${PURPLE}Version   = SUPREMEGOD                     ${NC}"
+echo -e "${BICyan}│ ${BOLD}${YELLOW}Developer = CANDRA-VPN-STORES                  ${NC}"
+echo -e "${BICyan}│ ${BOLD}${PURPLE}Version   = SUPREMEGOD{3.1}                     ${NC}"
 echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
 
 echo
