@@ -9,7 +9,7 @@ MYIP=$(wget -qO- ipinfo.io/ip)
 ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
-KEY="6527590744:AAFabcavk-EwHPbA5b5uRNhXcf7ypXMcKGI"
+KEY="6316536964:AAH6Vnb83NeA898VUu_mUquisi9zmUfLns0"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 # domain random
 CDN="https://raw.githubusercontent.com/scscp/xraylite/main/ssh"
