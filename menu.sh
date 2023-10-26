@@ -103,12 +103,6 @@ export UNDERLINE="\e[4m"
 
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/Zeastore/test/main"
-export Server1_URL="raw.githubusercontent.com/Zeastore/limit/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther=".geovpn"
 export MYIP=$( curl -s https://ipinfo.io/ip/ )
 Name=$(curl -sS https://raw.githubusercontent.com/scscp/permission/main/ip | grep $MYIP | awk '{print $2}')
 Exp=$(curl -sS https://raw.githubusercontent.com/scscp/permission/main/ip | grep $MYIP | awk '{print $3}')
@@ -234,7 +228,7 @@ export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 clear
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e "       << WELLCOME TO MY SCRIPT CANDRA VPN STORES >>                    \E[0m" | lolcat
+echo -e "        << WELLCOME TO MY SCRIPT CANDRA VPN STORES >>                    \E[0m" | lolcat
 echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
 echo -e "  ${BLUE}• ${GREEN}Sever Uptime        ${NC}= $( uptime -p  | cut -d " " -f 2-10000 ) "
 echo -e "  ${BLUE}• ${GREEN}Current Time        ${NC}= $( date -d "0 days" +"%d-%m-%Y | %X" )"
@@ -245,7 +239,7 @@ echo -e "  ${BLUE}• ${GREEN}ISP-VPS             ${NC}= ${ISP}"
 echo -e "  ${BLUE}• ${GREEN}City                ${NC}= ${CITY}"
 echo -e "  ${BLUE}• ${GREEN}Clients Name        ${NC}= ${YELLOW}$Name ${NC}"
 echo -e "  ${BLUE}• ${GREEN}Script Expired      ${NC}= ${YELLOW}$Exp (${NC}${RED} $dayleft Days ${NC}${YELLOW})${NC}"
-echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= CANDRA VPN STORE ${NC}"
+echo -e "  ${BLUE}• ${GREEN}Developer           ${NC}= CANDRA VPN STORE WA:081573872702${NC}"
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
 echo -e "                     << STATUS SERVICE >>                    \E[0m" | lolcat
 echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
@@ -277,9 +271,9 @@ echo -e " ${BICyan}[${BIWhite}04${BICyan}]${RED} •${NC} ${YELLOW}TROJAN ${GREE
 echo -e " ${BICyan}[${BIWhite}05${BICyan}]${RED} •${NC} ${YELLOW}S-SOCK ${GREEN}MENU     $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${YELLOW}SPEEDTEDT  $NC"
 echo -e " ${BICyan}[${BIWhite}06${BICyan}]${RED} •${NC} ${YELLOW}MENU ${GREEN}BACKUP     $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${YELLOW}CEK BANDWIDTH USE $NC"
 echo -e " ${BICyan}[${BIWhite}07${BICyan}]${RED} •${NC} ${YELLOW}AUTO ${GREEN}REBOOT     $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${YELLOW}LIMMIT SPEED $NC"
-echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${YELLOW}REBOOT          $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${YELLOW}WEBMIN $NC"
+echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${YELLOW}REBOOT                  $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${YELLOW}WEBMIN $NC"
 echo -e " ${BICyan}[${BIWhite}09${BICyan}]${RED} •${NC} ${YELLOW}RESTART ${GREEN}SERVICE $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${YELLOW}SCRIPT INFO $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${YELLOW}TRIAL           $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${YELLOW}CLEAR LOG $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${YELLOW}TRIAL SSH               $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${YELLOW}CLEAR LOG $NC"
 echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${YELLOW}ADD ${GREEN}HOST        $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${YELLOW}FIX MISSING POINTING $NC"
 echo -e " ${BICyan}[${BIWhite} X ${BICyan}] TYPE X FOR EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
 echo -e " ${RED}"
