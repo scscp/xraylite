@@ -84,6 +84,10 @@ echo -e "Domain Cloudflare: $domain"
 echo -e "PubKey : $slkey"
 echo -e "Nameserver: $sldomain"
 echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
+echo -e "SSH WSS/SSL  : $domain:443@$Login:$Pass
+echo -e "SSH WS/HTTP  : $domain:80@$Login:$Pass
+echo -e "SSH OPOK UDP : $domain:1-65535@$Login:$Pass
+echo -e "\033[1;36m**━━━━━━━━━━━━━━━━━━━━━━━━━━**\033[0m"
 echo -e "OpenSSH: 22"
 echo -e "Dropbear: 44, 69, 143"
 echo -e "SSH UDP: 1-65535"
