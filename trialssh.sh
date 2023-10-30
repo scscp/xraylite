@@ -123,6 +123,8 @@ echo -e "OPEN VPN: 1194"
 echo -e "BadVPN UDPGW: 7100,7200,7300"
 echo -e "Proxy CloudFront: [OFF]"
 echo -e "Proxy Squid: [ON]"
+echo -e "SSH WSS/SSL  : $domain:443@$Login:$Pass
+echo -e "SSH WS/HTTP  : $domain:80@$Login:$Pass
 echo -e "OVPN TCP: http://$IP:81/tcp.ovpn"
 echo -e "OVPN UDP: http://$IP:81/udp.ovpn"
 echo -e "OVPN SSL: http://$IP:81/ssl.ovpn"
