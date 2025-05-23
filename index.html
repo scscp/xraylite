@@ -1,0 +1,304 @@
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  if (request.method === 'POST') {
+    try {
+      const data = await request.json();
+      const subdomain = data.subdomain;
+      const ipAddress = data.ip;
+      const domain = data.domain;
+      const proxied = data.proxied;
+
+      if (!subdomain || !ipAddress || !domain) {
+        return new Response(JSON.stringify({ success: false, errors: [{ message: 'Subdomain, IP address, and domain are required.' }] }), {
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+
+      const response = await addSubdomainToCloudflare(subdomain, ipAddress, domain, proxied);
+      return new Response(JSON.stringify(response), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    } catch (error) {
+      return new Response(JSON.stringify({ success: false, errors: [{ message: error.message }] }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  }
+
+  return new Response(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Create Subdomain</title>
+      <link rel='icon' type='img/png' href='https://img001.prntscr.com/file/img001/GJ8QhCcoR3el1b5P6O3KZQ.png' sizes='32x32'>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+      <link rel="stylesheet" href="https://1note.online/css/style.css?v=1">
+      <style>
+        /* Toggle Switch Styles */
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+        }
+
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(26px);
+        }
+
+        .status-text {
+          margin-left: 10px;
+          font-weight: bold;
+          color: #4CAF50;
+        }
+
+        .alert {
+          padding: 15px;
+          margin-bottom: 20px;
+          border: 1px solid transparent;
+          border-radius: 4px;
+        }
+
+        .alert-success {
+          color: #3c763d;
+          background-color: #dff0d8;
+          border-color: #d6e9c6;
+        }
+
+        .alert-danger {
+          color: #a94442;
+          background-color: #f2dede;
+          border-color: #ebccd1;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 6px 12px;
+          margin-bottom: 0;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.42857143;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          border: 1px solid transparent;
+          border-radius: 4px;
+        }
+
+        .btn-primary {
+          color: #fff;
+          background-color: #337ab7;
+          border-color: #2e6da4;
+        }
+
+        .btn-secondary {
+          color: #fff;
+          background-color: #6c757d;
+          border-color: #6c757d;
+        }
+
+        .btn-sm {
+          padding: 5px 10px;
+          font-size: 12px;
+          line-height: 1.5;
+          border-radius: 3px;
+        }
+      </style>
+    </head>
+    <body>
+    <div id="wrapper">
+      <div id="body">
+        <div class="container page">
+          <div class="form">
+            <h1>Create Subdomain</h1>
+            <form method="POST" id="subdomain-form">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group field-subdomain">
+                    <label class="control-label" for="subdomain">Enter Name</label>
+                    <input type="text" id="subdomain" class="form-control input-lg" name="subdomain" placeholder="Enter subdomain name" required />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group field-ip">
+                    <label class="control-label" for="ip">IP Address</label>
+                    <input type="text" id="ip" class="form-control input-lg" name="ip" placeholder="Enter IP address" required />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group field-domain">
+                    <label class="control-label" for="domain">Select Domain</label>
+                    <select id="domain" class="form-control input-lg" name="domain" required>
+                      <option value="kingxstore.biz.id">zoel.my.id</option>
+                      <option value="prozect.xyz">cooming.soon</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group field-proxied">
+                    <label class="switch">
+                      <input type="checkbox" id="proxied" name="proxied" checked>
+                      <span class="slider round"></span>
+                    </label>
+                    <span id="proxy-status" class="status-text">Proxied (ON)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="submitcontainer">
+                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+              </div>
+            </form>
+            <div class="result" id="result"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('proxied').addEventListener('change', function() {
+        const statusText = document.getElementById('proxy-status');
+        if (this.checked) {
+          statusText.textContent = 'Proxied (ON)';
+          statusText.style.color = '#4CAF50';
+        } else {
+          statusText.textContent = 'DNS Only (OFF)';
+          statusText.style.color = '#ccc';
+        }
+      });
+
+      document.getElementById('subdomain-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const proxied = document.getElementById('proxied').checked;
+
+        const response = await fetch('/', {
+          method: 'POST',
+          body: JSON.stringify({
+            subdomain: formData.get('subdomain'),
+            ip: formData.get('ip'),
+            domain: formData.get('domain'),
+            proxied: proxied
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById('result').innerHTML = \`
+            <div class="alert alert-success" role="alert">
+              Subdomain created successfully: 
+              <a href="\${data.result.name}" target="_blank">\${data.result.name}</a>
+              <button class="btn btn-sm btn-secondary" onclick="navigator.clipboard.writeText('\${data.result.name}')">Copy</button>
+            </div>
+          \`;
+        } else {
+          document.getElementById('result').innerHTML = \`
+            <div class="alert alert-danger" role="alert">
+              <strong>Error:</strong> \${data.errors.map(err => err.message).join(', ')}
+            </div>
+          \`;
+        }
+      });
+    </script>
+    </body>
+    </html>
+  `, {
+    headers: { 'Content-Type': 'text/html' },
+  });
+}
+
+async function addSubdomainToCloudflare(subdomain, ipAddress, domain, proxied) {
+  const zoneIds = {
+    'kingxstore.biz.id': '80b96dd7d80fdee55f1cdc61500b65e1',
+    'prozect.xyz': 'd6bfae4a3ee33becab25cb4ed3779704',
+  };
+
+  const zoneId = zoneIds[domain];
+  if (!zoneId) {
+    throw new Error('Invalid domain selected.');
+  }
+
+  const apiKey = '2df54abafd84f894c0c62e721db7bf6cf9322'; // API Key Anda
+  const email = 'irawancandra2303@gmail.com'; // Email Anda
+
+  const url = `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`;
+
+  const data = {
+    type: 'A',
+    name: `${subdomain}.${domain}`,
+    content: ipAddress,
+    ttl: 1,
+    proxied: proxied,
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Email': email,
+        'X-Auth-Key': apiKey,
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    if (!result.success) {
+      throw new Error(result.errors.map(err => err.message).join(', '));
+    }
+
+    return result;
+  } catch (error) {
+    console.error('Error adding subdomain:', error);
+    throw new Error('Failed to add subdomain. Please try again.');
+  }
+}
